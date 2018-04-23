@@ -1,0 +1,48 @@
+webpack собирает из src в dist
+
+npm init //создать package.json
+
+npm i webpack --save-dev //установить модуль
+
+npm i webpack-cli --save-dev
+
+package.json    //  "scripts": {
+                      "build": "webpack" // --mode production //более зжатый и эфективней
+                    }                       --mode development //ускорение процесса зборки
+
+/src/index.js     //появиться /dist/main.js
+
+index.html
+
+npm i jquery --save
+
+--save попадает в dependencies модули для этогового кода
+--save-dev попадает в devDependencies модули нужные для зборки
+
+npm i webpack-dev-server --save-dev
+
+package.json    //  "scripts": {
+                      "dev": "webpack-dev-server --mode development" //Project is running at http://localhost:8080/
+                                                                    --open  //запуск в браузере
+                    }
+
+webpack-dev-server не обновляет папку dist он ее создает в памяти
+браузеру нужно объяснить от куда этот файл надо брать
+для этого нужно создать файл webpack.config.js
+                                        let conf = {
+
+                                        };
+                                        module.exports = conf;
+
+установит модуль относительного пути
+npm i path --save-dev
+подключить в webpack.config.js
+let path = require("path")
+вызвать команду path: path.resolve() //соединяет пути
+publicPath: 'dist/' //не создает папку dist и запускает проект в браузере
+                      и работает браузер-синк , при изменении в коде меняеться
+                      в браузере
+devServer: {
+    overlay: true //ошибки не в консоле,а в браузере
+}
+

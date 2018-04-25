@@ -46,3 +46,43 @@ devServer: {
     overlay: true //ошибки не в консоле,а в браузере
 }
 
+npm i babel-core
+      babel-loader
+      babel-preset-env //перегонка из нового стандарта в старый
+      babel-preset-stage-3 самые новые возможности которые появились в стандарте
+.babelrc
+
+подключить и переработать js файлы
+директива module: {
+    rules: [] //правило с каким расширением,что мы делаем
+}
+
+подключаем css
+npm i style-loader css-loader --save-dev
+src/css/style.css // можно разместить и выше папки src,
+                    но лучше в ней, чтоб webpack обробатывал
+добавить
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                    ]
+            }
+
+npm i bootstrap --save
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+https://www.npmjs.com/package/extract-text-webpack-plugin
+npm i extract-text-webpack-plugin@next --save-dev //@next бетта версия
+let ExtractTextPlugin = require("extract-text-webpack-plugin");
+  plugins: [
+    new ExtractTextPlugin("styles.css"),
+  ]
+  use: ExtractTextPlugin.extract({
+      fallback: "style-loader",// отменяем действие style-loader,можне и не откатываться
+      use: "css-loader"
+  })
+  <link rel="stylesheet" href="dist/styles.css">

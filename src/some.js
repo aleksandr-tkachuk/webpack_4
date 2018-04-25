@@ -25,8 +25,7 @@ class SomeMath{
     }
 
     merge(a,b){
-        console.log(a,b);
-
+        //console.log(a);
         return {
             ...a,
             ...b
